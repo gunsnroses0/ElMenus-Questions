@@ -28,6 +28,13 @@ public class Question {
 	private static final String COLLECTION_NAME = "questions";
 
 	private static MongoCollection<Document> collection = null;
+	private static int DbPoolCount = 4;
+	public static int getDbPoolCount() {
+		return DbPoolCount;
+	}
+	public static void setDbPoolCount(int dbPoolCount) {
+		DbPoolCount = dbPoolCount;
+	}
 	
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) {
 		MongoClientURI uri = new MongoClientURI(

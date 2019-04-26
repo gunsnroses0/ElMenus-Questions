@@ -1,0 +1,10 @@
+POST,/question,CreateQuestion
+PATCH/question/id,ReplyToQuestion
+POST,/question/addCommand/,AddCommand
+POST,/question/updateCommand/,UpdateCommand
+POST,/question/deleteCommand/,DeleteCommand
+POST,/question/updateThreadPoolCount/,UpdateThreadPoolCount
+POST,/question/updateDBPoolCount/,UpdateDBPoolCount
+GET,/question/freeze/,FreezeQueue
+GET,/question/resume/,ResumeQueue
+POST,/question,Test

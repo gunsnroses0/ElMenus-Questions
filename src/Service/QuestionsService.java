@@ -29,6 +29,7 @@ import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
 import Commands.*;
+import Model.Question;
 
 public class QuestionsService {
 	private static String RPC_QUEUE_NAME = "question-request";
@@ -46,6 +47,7 @@ public class QuestionsService {
 	public static void main(String[] argv) {
 		run();
 		ServiceController.run();
+		Question.initializeDb();
 	}
 
 	public static void run() {

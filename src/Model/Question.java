@@ -38,15 +38,22 @@ public class Question {
 		DbPoolCount = dbPoolCount;
 	}
 	
-	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
+	static MongoClientOptions.Builder options = null;
+	static MongoClientURI uri = null;
+	static MongoClient mongoClient = null; 
+	
+	public static void initializeDb() {
+		options = MongoClientOptions.builder()
+				.connectionsPerHost(DbPoolCount);
+		uri = new MongoClientURI(
 				host,options);
-		MongoClient mongoClient = new MongoClient(uri);
+		mongoClient = new MongoClient(uri);
+			
+	}
+	
+	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
+		
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
-//    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
-//    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
 		
 		// Retrieving a collection
 		MongoCollection<Document> collection = database.getCollection("questions");
@@ -64,10 +71,7 @@ public class Question {
 	}
 	
 	public static HashMap<String, Object> update(String id, HashMap<String, Object> atrributes) {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
+
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
@@ -89,10 +93,7 @@ public class Question {
 	}
 	
 	public static HashMap<String, Object> get(String messageId) {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
+
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);

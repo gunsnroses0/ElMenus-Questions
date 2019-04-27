@@ -1,5 +1,5 @@
 POST,/question/,CreateQuestion
-PATCH/question/id,ReplyToQuestion
+PATCH,/question/id,ReplyToQuestion
 POST,/question/addCommand/,AddCommand
 POST,/question/updateCommand/,UpdateCommand
 POST,/question/deleteCommand/,DeleteCommand

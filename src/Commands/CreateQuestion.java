@@ -24,26 +24,9 @@ public class CreateQuestion extends Command{
 		//System.out.println(props.get("id"));
 		
 		try {
-//			System.out.println("rest_id");
-//			System.out.println(props.get("id"));
-//			JSONObject messageBody = (JSONObject) parser.parse((String) props.get("body"));
-//			HashMap<String, Object> requestBodyHash = jsonToMap((JSONObject) messageBody.get("body"));
-//			AMQP.BasicProperties properties = (AMQP.BasicProperties) props.get("properties");
-//			AMQP.BasicProperties replyProps = (AMQP.BasicProperties) props.get("replyProps");
-//			Envelope envelope = (Envelope) props.get("envelope");
-//			HashMap<String, Object> createdMessage = Question.create(requestBodyHash);
-//			JSONObject response = jsonFromMap(createdMessage);
+			
 			JSONObject body = (JSONObject) parser.parse((String) props.get("body"));
-			String url = body.get("uri").toString();
-			url = url.substring(1);
-			String[] parametersArray = url.split("/");
-			String targetID = parametersArray[1];
-			
-			
-			
-			
 			HashMap<String, Object> requestBodyHash = jsonToMap((JSONObject) body.get("body"));
-			requestBodyHash.put("targetID", targetID);
 			AMQP.BasicProperties properties = (AMQP.BasicProperties) props.get("properties");
 			AMQP.BasicProperties replyProps = (AMQP.BasicProperties) props.get("replyProps");
 			Envelope envelope = (Envelope) props.get("envelope");

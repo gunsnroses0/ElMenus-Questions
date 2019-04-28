@@ -41,8 +41,6 @@ public class ReplyToQuestion extends Command{
 			
 			
 			HashMap<String, Object> requestBodyHash = jsonToMap((JSONObject) body.get("body"));
-			Object obj = requestBodyHash.remove("text");
-			requestBodyHash.put("reply", obj);
 			AMQP.BasicProperties properties = (AMQP.BasicProperties) props.get("properties");
 			AMQP.BasicProperties replyProps = (AMQP.BasicProperties) props.get("replyProps");
 			Envelope envelope = (Envelope) props.get("envelope");

@@ -45,8 +45,10 @@ public class Question {
 	public static void initializeDb() {
 		options = MongoClientOptions.builder()
 				.connectionsPerHost(DbPoolCount);
+		//		uri = new MongoClientURI(
+		//		host,options);
 		uri = new MongoClientURI(
-				host,options);
+				"mongodb://localhost");
 		mongoClient = new MongoClient(uri);
 			
 	}
@@ -72,7 +74,6 @@ public class Question {
 	
 	public static HashMap<String, Object> update(String id, HashMap<String, Object> atrributes) {
 
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
@@ -94,7 +95,6 @@ public class Question {
 	
 	public static HashMap<String, Object> get(String messageId) {
 
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
